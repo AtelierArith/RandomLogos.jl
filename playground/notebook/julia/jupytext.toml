@@ -1,0 +1,4 @@
+formats = "ipynb,jl:percent"
+# omit metadata
+notebook_metadata_filter = "-all"
+cell_metadata_filter = "-all"

@@ -1,0 +1,9 @@
+*.gif
+*.ipynb
+.DS_Store
+.ipynb_checkpoints
+/Manifest.toml
+/docs/Manifest.toml
+/docs/build/
+docs/build/
+docs/site/

@@ -1,0 +1,52 @@
+version: '3'
+services:
+  jupyter:
+    image: randomlogosjl
+    container_name: randomlogosjl-jupyter
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    ports:
+      - "8888:8888"
+    command: jupyter notebook --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
+  lab:
+    image: randomlogosjl
+    container_name: randomlogosjl-lab
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    ports:
+      - "8888:8888"
+    command: jupyter lab --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
+  julia:
+    image: randomlogosjl
+    container_name: randomlogosjl-julia
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    command: julia --project=/workspace/RandomLogos.jl
+  shell:
+    image: randomlogosjl
+    container_name: randomlogosjl-shell
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    command: /bin/bash
+  web:
+    image: randomlogosjl
+    container_name: randomlogosjl-packagedocs
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    ports:
+      - "8000:8000"
+    command: make web
+  pluto:
+    image: randomlogosjl
+    container_name: randomlogosjl-pluto
+    volumes:
+      - ./:/workspace/RandomLogos.jl
+    working_dir: /workspace/RandomLogos.jl
+    ports:
+      - "1234:1234"
+    command: julia -e 'import Pluto; Pluto.run(host="0.0.0.0", port=1234)'
