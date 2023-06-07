@@ -173,13 +173,6 @@ begin
             ys[i] = y
         end
         # normalize
-        #=
-        		Mx = maximum(xs)
-        		mx = minimum(xs)
-        		My = maximum(ys)
-        		my = minimum(ys)
-        		=#
-
         mx, Mx = vvextrema(xs)
         my, My = vvextrema(ys)
 
