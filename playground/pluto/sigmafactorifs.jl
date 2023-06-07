@@ -194,7 +194,7 @@ end
 
 # ╔═╡ 4dc249ad-0322-4e62-be39-69ff34eec06b
 begin
-    rng = Xoshiro(4)
+    rng = Xoshiro(9)
     T = Float64
     ifs = rand(rng, SigmaFactorIFS{2,T})
     @show ifs.transforms |> length
