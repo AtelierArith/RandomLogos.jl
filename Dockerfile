@@ -39,7 +39,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 
 # install NodeJS
 RUN apt-get update && \
-    curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
     apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* # clean up
 
@@ -47,7 +47,7 @@ RUN apt-get update && \
 RUN curl -kL https://bootstrap.pypa.io/get-pip.py | python3 && \
     pip3 install \
     jupyter \
-    jupyterlab \
+    jupyterlab==3.6.4 \
     jupytext \
     ipywidgets \
     jupyter-contrib-nbextensions \
@@ -77,13 +77,10 @@ RUN pip3 install jupyter-resource-usage && \
     echo Done
 
 # Install/enable extension for JupyterLab users
-RUN jupyter labextension install jupyterlab-topbar-extension && \
-    jupyter labextension install jupyterlab-system-monitor && \
+RUN jupyter labextension install jupyterlab-system-monitor && \
     jupyter nbextension enable --py widgetsnbextension && \
     jupyter labextension install @jupyter-widgets/jupyterlab-manager --no-build && \
     jupyter labextension install @z-m-k/jupyterlab_sublime --no-build && \
-    jupyter labextension install @ryantam626/jupyterlab_code_formatter --no-build && \
-    jupyter serverextension enable --py jupyterlab_code_formatter && \
     jupyter labextension install @hokyjack/jupyterlab-monokai-plus --no-build && \
     jupyter labextension install @jupyterlab/server-proxy --no-build && \
     jupyter labextension install jupyterlab-plotly --no-build && \
