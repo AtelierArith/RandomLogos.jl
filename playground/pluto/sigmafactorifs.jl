@@ -142,8 +142,8 @@ begin
             σ₁, σ₂ = svs[k, 1], svs[k, 2]
             Rθ = rand(rng, RotMatrix{2,T})
             Rϕ = rand(rng, RotMatrix{2,T})
-            Σ = diagm(SVector{2,Float32}([σ₁, σ₂]))
-            D = diagm(SVector{2,Float32}(2rand(rng, Bool, 2) .- 1))
+            Σ = diagm(SVector{2,T}([σ₁, σ₂]))
+            D = diagm(SVector{2,T}(2rand(rng, Bool, 2) .- 1))
             W = Rθ * Σ * Rϕ * D
             b₁ = uniform(rng, -one(T), one(T))
             b₂ = uniform(rng, -one(T), one(T))
