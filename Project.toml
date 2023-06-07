@@ -3,6 +3,17 @@ uuid = "ae2b3ca2-baa9-4ff5-b4d2-d3fa2d2d37cc"
 authors = ["Satoshi Terasaki <terasakisatoshi.math@gmail.com> and contributors"]
 version = "1.0.0-DEV"
 
+[deps]
+ConcreteStructs = "2569d6c7-a4a2-43d3-a901-331e8e4be471"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+Images = "916415d5-f1e6-5110-898d-aaa5f9f070e0"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+LoopVectorization = "bdcacae8-1622-11e9-2a5c-532679323890"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+Rotations = "6038ab10-8711-5258-84ad-4b1120ba62dc"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+VectorizedReduction = "4ffe575c-65e5-43f4-bc05-e0b500dc3d2c"
+
 [compat]
 julia = "1.6.7"
 
