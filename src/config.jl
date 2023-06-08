@@ -18,8 +18,8 @@ for IFSType in [:SigmaFactorIFS,]
     end
 end
 
-function toifstype(name::AbstractString, vargs...; kwargs...)
-    toifstype(Val{Symbol(name)}(), vargs...; kwargs...)
+function toifstype(name::AbstractString, vargs::Vararg{Any, N}) where {N}
+    toifstype(Val{Symbol(name)}(), vargs...)
 end
 
 function toifstype(config::Config)
