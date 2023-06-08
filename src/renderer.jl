@@ -37,15 +37,16 @@ function render!(
 ) where {C, T<:AbstractFloat}
     H, W = size(canvas)
     generate_points!(rng, xs, ys, ifs, H, W)
+    c = rand(rng, JULIA_COLORS)
     for (x, y) in zip(xs, ys)
-        canvas[trunc(Int, y), trunc(Int, x)] = C(0.5)
+        canvas[trunc(Int, y), trunc(Int, x)] = c
     end
     canvas
 end
 
-function render(rng::AbstractRNG, ifs::AbstractIFS{2}, config::Config)
-    (; npoints, H, W)
-    canvas = zeros(Gray{N0f8}, H, W)
+function render(rng::AbstractRNG, ifs::AbstractIFS{2, T}, config::Config) where {T}
+    (; npoints, H, W) = config
+    canvas = zeros(RGB{N0f8}, H, W)
     xs = Vector{T}(undef, npoints)
     ys = Vector{T}(undef, npoints)
     render!(rng, canvas, xs, ys, ifs)
@@ -58,11 +59,12 @@ end
 function render(config::Config)
     (; rngname, seed, ifsname, ndims) = config
     rng = eval(Symbol(rngname))(seed)
-    ifs = toifstype(ifsname, ndims)
+    IFSType = toifstype(ifsname, ndims)
+    ifs = rand(rng, IFSType)
     render(rng, ifs, config)
 end
 
 function render(configpath::AbstractString)
-    config = tostruct(Config, TOML.parsefile(configpath))
+    config = Config(configpath)
     render(config)
 end

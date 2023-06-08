@@ -1,3 +1,8 @@
+@concrete struct SigmaFactorIFS{Dim,T} <: AbstractIFS{Dim,T}
+    transforms # Affine transforms
+    catdist # Categorical distribution
+end
+
 function sample_svs(
     rng::AbstractRNG,
     σfactor::T, N::Integer,
@@ -68,4 +73,8 @@ function Base.rand(
     probability_vector ./= sum(probability_vector)
     catdist = Categorical(probability_vector)
     SigmaFactorIFS{2,T}(transforms, catdist)
+end
+
+function Base.rand(rng::AbstractRNG,::Random.SamplerType{SigmaFactorIFS{2}})
+    rand(rng, SigmaFactorIFS{2,Float64})
 end

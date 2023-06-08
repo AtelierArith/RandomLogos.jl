@@ -8,8 +8,8 @@ struct Config
     seed::Int
 end
 
-function toifstype(name::AbstractString, vargs...; kwargs...)
-    toifstype(Val{Symbol(name)}(), vargs...; kwargs...)
+function Config(configpath::AbstractString)
+    tostruct(Config, TOML.parsefile(configpath))
 end
 
 for IFSType in [:SigmaFactorIFS,]
@@ -18,3 +18,11 @@ for IFSType in [:SigmaFactorIFS,]
     end
 end
 
+function toifstype(name::AbstractString, vargs...; kwargs...)
+    toifstype(Val{Symbol(name)}(), vargs...; kwargs...)
+end
+
+function toifstype(config::Config)
+    (; ifsname, ndims) = config
+    toifstype(ifsname, ndims)
+end
