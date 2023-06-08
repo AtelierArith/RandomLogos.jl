@@ -69,34 +69,3 @@ function Base.rand(
     catdist = Categorical(probability_vector)
     SigmaFactorIFS{2,T}(transforms, catdist)
 end
-
-function generate_points!(
-    rng::AbstractRNG, xs::Vector, ys::Vector,
-    ifs::SigmaFactorIFS{2,T}, H::Integer, W::Integer,
-) where {T<:AbstractFloat}
-    pt = @SVector zeros(T, 2)
-    for i in eachindex(xs, ys)
-        aff = ifs.transforms[rand(rng, ifs.catdist)]
-        pt = aff(pt)
-        x, y = pt
-        xs[i] = x
-        ys[i] = y
-    end
-    # normalize
-    mx, Mx = vvextrema(xs)
-    my, My = vvextrema(ys)
-
-    @. xs = (((W - 5) - 5) / (Mx - mx)) * (xs - mx) + 5
-    @. ys = (((H - 5) - 5) / (My - my)) * (ys - my) + 5
-    return (xs, ys)
-end
-
-function generate_points(
-    rng::AbstractRNG, ifs::SigmaFactorIFS{2,T},
-    npoints::Integer, H::Integer, W::Integer,
-) where {T<:AbstractFloat}
-    xs = Vector{T}(undef, npoints)
-    ys = Vector{T}(undef, npoints)
-    generate_points!(rng, xs, ys, ifs, H, W)
-    return xs, ys
-end
