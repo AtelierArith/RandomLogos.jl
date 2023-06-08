@@ -15,6 +15,7 @@ StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
 VectorizedReduction = "4ffe575c-65e5-43f4-bc05-e0b500dc3d2c"
 
 [compat]
+Distributions = "0.25"
 julia = "1.6.7"
 
 [extras]
