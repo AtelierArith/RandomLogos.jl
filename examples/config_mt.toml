@@ -1,0 +1,7 @@
+H = 384
+W = 384
+npoints = 100_000
+ifsname = "SigmaFactorIFS"
+ndims = 2
+rngname = "MersenneTwister"
+seed = 1
