@@ -75,6 +75,6 @@ function Base.rand(
     SigmaFactorIFS{2,T}(transforms, catdist)
 end
 
-function Base.rand(rng::AbstractRNG,::Random.SamplerType{SigmaFactorIFS{2}})
+function Base.rand(rng::AbstractRNG, ::Random.SamplerType{SigmaFactorIFS{2}})
     rand(rng, SigmaFactorIFS{2,Float64})
 end
