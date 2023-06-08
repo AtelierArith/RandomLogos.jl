@@ -3,5 +3,5 @@ W = 384
 npoints = 100_000
 ifsname = "SigmaFactorIFS"
 ndims = 2
-rngname = "Xoshiro"
-seed = 2023
+rngname = "MersenneTwister"
+seed = 1
