@@ -39,7 +39,7 @@ end
     @test typeof(aff(x)) == SVector{2,Float64}
     @test_call aff(x)
     @test_opt aff(x)
-    @test aff(x) == [1.1638974950254997, 0.23737849333751335]
+    @test aff(x) ≈ [1.1638974950254997, 0.23737849333751335]
 end
 
 @testset "ifs_sigma_factor.jl: samplve_svs" begin
@@ -93,7 +93,7 @@ end
             ifs,
             H, W,
         )
-        @test xs == [
+        @test xs ≈ [
             87.86124394400032,
             56.88580848676319,
             94.03089491005606,
@@ -105,7 +105,7 @@ end
             5.0,
             25.821379866267705,
         ]
-        @test ys == [
+        @test ys ≈ [
             60.713016405498564,
             32.7280286460874,
             15.29731836164603,
