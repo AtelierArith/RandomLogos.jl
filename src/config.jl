@@ -12,13 +12,17 @@ function Config(configpath::AbstractString)
     tostruct(Config, TOML.parsefile(configpath))
 end
 
-for IFSType in [:SigmaFactorIFS,]
-    @eval function toifstype(::Val{nameof($IFSType)}, ndims::Integer, ::Type{T}=Float64) where {T<:AbstractFloat}
-        return $IFSType{ndims, T}
+for IFSType in [:SigmaFactorIFS]
+    @eval function toifstype(
+        ::Val{nameof($IFSType)},
+        ndims::Integer,
+        ::Type{T}=Float64,
+    ) where {T<:AbstractFloat}
+        return $IFSType{ndims,T}
     end
 end
 
-function toifstype(name::AbstractString, vargs::Vararg{Any, N}) where {N}
+function toifstype(name::AbstractString, vargs::Vararg{Any,N}) where {N}
     toifstype(Val{Symbol(name)}(), vargs...)
 end
 

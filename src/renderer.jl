@@ -30,11 +30,11 @@ function generate_points(
 end
 
 function render!(
-    rng::AbstractRNG, 
+    rng::AbstractRNG,
     canvas::Matrix{C},
-    xs::Vector{T}, ys::Vector{T}, 
-    ifs::AbstractIFS{2,T}, 
-) where {C, T<:AbstractFloat}
+    xs::Vector{T}, ys::Vector{T},
+    ifs::AbstractIFS{2,T},
+) where {C,T<:AbstractFloat}
     H, W = size(canvas)
     generate_points!(rng, xs, ys, ifs, H, W)
     c = rand(rng, JULIA_COLORS)
@@ -44,7 +44,7 @@ function render!(
     canvas
 end
 
-function render(rng::AbstractRNG, ifs::AbstractIFS{2, T}, config::Config) where {T}
+function render(rng::AbstractRNG, ifs::AbstractIFS{2,T}, config::Config) where {T}
     (; npoints, H, W) = config
     canvas = zeros(RGB{N0f8}, H, W)
     xs = Vector{T}(undef, npoints)
