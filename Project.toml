@@ -19,6 +19,8 @@ VectorizedReduction = "4ffe575c-65e5-43f4-bc05-e0b500dc3d2c"
 
 [compat]
 Distributions = "0.25"
+Images = "0.25"
+ConcreteStructs = "0.2"
 julia = "1.8.0"
 
 [extras]
