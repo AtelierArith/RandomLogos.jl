@@ -17,7 +17,7 @@ for IFSType in [:SigmaFactorIFS]
         ::Val{nameof($IFSType)},
         ndims::Integer,
         ::Type{T}=Float64,
-    ) where {T<:AbstractFloat}
+    ) where {T}
         return $IFSType{ndims,T}
     end
 end
