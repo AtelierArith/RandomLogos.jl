@@ -18,6 +18,7 @@ ToStruct = "43ec2cc1-0e50-5406-a854-b7ff8fdb8dad"
 VectorizedReduction = "4ffe575c-65e5-43f4-bc05-e0b500dc3d2c"
 
 [compat]
+ToStruct = "0.2"
 ImageCore = "0.9"
 VectorizedReduction = "0.1"
 Rotations = "1"
