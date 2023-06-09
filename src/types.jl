@@ -1,3 +1,6 @@
+"""
+Type for an affine transformation
+"""
 @concrete struct Affine
     W
     b

@@ -1,36 +1,7 @@
-function generate_points!(
-    rng::AbstractRNG, xs::Vector, ys::Vector,
-    ifs::SigmaFactorIFS{2,T}, H::Integer, W::Integer,
-) where {T<:AbstractFloat}
-    pt = @SVector zeros(T, 2)
-    for i in eachindex(xs, ys)
-        aff = ifs.transforms[rand(rng, ifs.catdist)]
-        pt = aff(pt)
-        x, y = pt
-        xs[i] = x
-        ys[i] = y
-    end
-    # normalize
-    mx, Mx = vvextrema(xs)
-    my, My = vvextrema(ys)
-
-    # To prevent bounds errors when drawing points on a canvas, 
-    # an offset value of 5 is used.
-    @. xs = (((W - 5) - 5) / (Mx - mx)) * (xs - mx) + 5
-    @. ys = (((H - 5) - 5) / (My - my)) * (ys - my) + 5
-    return xs, ys
-end
-
-function generate_points(
-    rng::AbstractRNG, ifs::SigmaFactorIFS{2,T},
-    npoints::Integer, H::Integer, W::Integer,
-) where {T<:AbstractFloat}
-    xs = Vector{T}(undef, npoints)
-    ys = Vector{T}(undef, npoints)
-    generate_points!(rng, xs, ys, ifs, H, W)
-    return xs, ys
-end
-
+"""
+    render!
+In-place version of [`render`](@ref)
+"""
 function render!(
     rng::AbstractRNG,
     canvas::Matrix{C},
@@ -46,18 +17,42 @@ function render!(
     canvas
 end
 
+"""
+    render(rng::AbstractRNG, ifs::AbstractIFS{2,T}, config::Config) where {T}
+
+Generates a graphical rendering of 2D points based on a given Iterated Function System (IFS)
+and configuration. The rendering is created within the bounds defined by the height `H` and
+width `W` parameters provided in `config`.
+
+# Arguments
+- `rng::AbstractRNG`: An object that generates random numbers.
+- `ifs::AbstractIFS{2,T}`: An Iterated Function System (IFS) to be used in generating points.
+- `config::Config`: A configuration object with the following properties:
+    - `npoints::Integer`: The number of points to generate for the rendering.
+    - `H::Integer`: The height of the output space (canvas).
+    - `W::Integer`: The width of the output space (canvas).
+
+# Returns
+- `canvas`: The generated image as an array of RGB values.
+"""
 function render(rng::AbstractRNG, ifs::AbstractIFS{2,T}, config::Config) where {T}
     (; npoints, H, W) = config
     canvas = zeros(RGB{N0f8}, H, W)
     xs = Vector{T}(undef, npoints)
     ys = Vector{T}(undef, npoints)
     render!(rng, canvas, xs, ys, ifs)
+    return canvas
 end
 
 function render(ifs::AbstractIFS, config::Config)
     render(Random.default_rng(), ifs, config)
 end
 
+"""
+    render(config::Config)
+
+Generates a geometry object according to `config` to be used in generating one.
+"""
 function render(config::Config)
     (; rngname, seed, ifsname, ndims) = config
     rng = eval(Symbol(rngname))(seed)
@@ -66,6 +61,12 @@ function render(config::Config)
     render(rng, ifs, config)
 end
 
+"""
+    render(configpath::AbstractString)
+
+Load TOML configuration file from `configpath` and convert to `config::Config`.
+Then call `render(config)`
+"""
 function render(configpath::AbstractString)
     config = Config(configpath)
     render(config)
