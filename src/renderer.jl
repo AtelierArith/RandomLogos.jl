@@ -14,6 +14,8 @@ function generate_points!(
     mx, Mx = vvextrema(xs)
     my, My = vvextrema(ys)
 
+    # To prevent bounds errors when drawing points on a canvas, 
+    # an offset value of 5 is used.
     @. xs = (((W - 5) - 5) / (Mx - mx)) * (xs - mx) + 5
     @. ys = (((H - 5) - 5) / (My - my)) * (ys - my) + 5
     return xs, ys
