@@ -35,5 +35,4 @@ $ ls
 logo.png
 ```
 
-More examples can be found [here](https://AtelierArith.github.io/RandomLogos.jl/dev/).
-
+More examples can be found [here](https://atelierarith.github.io/RandomLogos.jl/dev/usage/)
