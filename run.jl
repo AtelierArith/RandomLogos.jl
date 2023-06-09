@@ -1,3 +1,4 @@
-using ImageInTerminal
+using Images
 using RandomLogos: render
-render("examples/config_mt.toml") |> display
+canvas = render("examples/config_mt.toml")
+save("logo.png", canvas)
