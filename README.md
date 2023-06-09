@@ -1,6 +1,6 @@
 # RandomLogos.jl [![Build Status](https://github.com/AtelierArith/RandomLogos.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/AtelierArith/RandomLogos.jl/actions/workflows/CI.yml?query=branch%3Amain) [![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://AtelierArith.github.io/RandomLogos.jl/stable/) [![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://AtelierArith.github.io/RandomLogos.jl/dev/)
 
-<img width="800" alt="image" src="https://github.com/AtelierArith/RandomLogos.jl/assets/16760547/9969325c-9740-4b0d-aa91-1c3ea5062cbd">
+<img width="800" alt="image" src="https://github.com/AtelierArith/RandomLogos.jl/assets/16760547/87a43f0e-512f-4791-8a22-fa49ce24d546">
 
 # Description
 
