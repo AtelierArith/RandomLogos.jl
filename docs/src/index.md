@@ -4,7 +4,7 @@ CurrentModule = RandomLogos
 
 # RandomLogos
 
-Documentation for [RandomLogos](https://github.com/terasakisatoshi/RandomLogos.jl).
+Documentation for [RandomLogos](https://github.com/AtelierArith/RandomLogos.jl).
 
 # Description
 
