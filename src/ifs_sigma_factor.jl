@@ -5,10 +5,11 @@ on [this page](https://catalys1.github.io/fractal-pretraining/)
 # Examples
 
 ```julia-repl
-julia> using Random, ImageCore
+julia> using RandomLogos: SigmaFactorIFS
+julia> using RandomLogos: generate_points, render!
+julia> using Random, ImageInTerminal, ImageCore
 julia> rng = Xoshiro(0)
-julia> # create an instance of SigmaFactorIFS
-julia> ifs = rand(rng, SigmaFactorIFS{2})
+julia> ifs = rand(rng, SigmaFactorIFS{2}) # create an instance of SigmaFactorIFS
 julia> npoints = 100_000; H = W = 384
 julia> xs, ys = generate_points(rng, ifs, npoints, H, W)
 julia> canvas = zeros(RGB{N0f8}, H, W)
@@ -26,9 +27,11 @@ end
     sample_svs(rng::AbstractRNG, α::T, N::Integer) where {T <: AbstractFloat}
 Given α so called σ-factor, create `N` tuples in the form of (σₖ₁, σₖ₂) for k ∈ 1:N such that
 
-``\\alpha = \\sum_{k=1}^N \\sigma_{k1} + 2\\sigma_{k2}``
+``
+\\alpha = \\sum_{k=1}^N \\sigma_{k1} + 2\\sigma_{k2}
+``
 
-Returns N by 2 matrix Σ::Matrix{T}(N, 2) that satisfies Σ[k, 1] is σₖ₁ and Σ[k, 2] is σₖ₂.
+Returns `N` by 2 matrix `Σ::Matrix{T}(N, 2)` that satisfies `Σ[k, 1]` is `σₖ₁` and `Σ[k, 2]` is `σₖ₂`.
 """
 function sample_svs(rng::AbstractRNG, α::T, N::Integer) where {T<:AbstractFloat}
     Σ = zeros(T, N, 2)

@@ -2,15 +2,21 @@
 CurrentModule = RandomLogos
 ```
 
+# Usage
+
+Let's get started😆😆😆! Open Julia REPL and run the following code:
+
 ```@example usage
 using TOML
 using Random
 using Images
 
-using RandomLogos
+import RandomLogos
 using RandomLogos: render
 using RandomLogos: Config
 ```
+
+Go on the next section below.
 
 ## Example(`config_mt.toml`)
 
@@ -43,7 +49,7 @@ canvas
 We can generate multiple logos as below:
 
 ```@example usage
-configpath = joinpath(pkgdir(RandomLogos), "examples", "config_xoshiro.toml")
+configpath = joinpath(pkgdir(RandomLogos), "examples", "config_mt.toml")
 config = Config(configpath)
 logos = Matrix{RGB{N0f8}}[]
 for s in 1:30
