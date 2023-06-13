@@ -5,10 +5,11 @@ on [this page](https://catalys1.github.io/fractal-pretraining/)
 # Examples
 
 ```julia-repl
-julia> using Random, ImageCore
+julia> using RandomLogos: SigmaFactorIFS
+julia> using RandomLogos: generate_points, render!
+julia> using Random, ImageInTerminal, ImageCore
 julia> rng = Xoshiro(0)
-julia> # create an instance of SigmaFactorIFS
-julia> ifs = rand(rng, SigmaFactorIFS{2})
+julia> ifs = rand(rng, SigmaFactorIFS{2}) # create an instance of SigmaFactorIFS
 julia> npoints = 100_000; H = W = 384
 julia> xs, ys = generate_points(rng, ifs, npoints, H, W)
 julia> canvas = zeros(RGB{N0f8}, H, W)
