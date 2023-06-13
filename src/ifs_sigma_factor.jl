@@ -27,9 +27,11 @@ end
     sample_svs(rng::AbstractRNG, α::T, N::Integer) where {T <: AbstractFloat}
 Given α so called σ-factor, create `N` tuples in the form of (σₖ₁, σₖ₂) for k ∈ 1:N such that
 
-``\\alpha = \\sum_{k=1}^N \\sigma_{k1} + 2\\sigma_{k2}``
+``
+\\alpha = \\sum_{k=1}^N \\sigma_{k1} + 2\\sigma_{k2}
+``
 
-Returns N by 2 matrix Σ::Matrix{T}(N, 2) that satisfies Σ[k, 1] is σₖ₁ and Σ[k, 2] is σₖ₂.
+Returns `N` by 2 matrix `Σ::Matrix{T}(N, 2)` that satisfies `Σ[k, 1]` is `σₖ₁` and `Σ[k, 2]` is `σₖ₂`.
 """
 function sample_svs(rng::AbstractRNG, α::T, N::Integer) where {T<:AbstractFloat}
     Σ = zeros(T, N, 2)
