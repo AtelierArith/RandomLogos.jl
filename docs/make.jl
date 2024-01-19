@@ -6,13 +6,16 @@ DocMeta.setdocmeta!(RandomLogos, :DocTestSetup, :(using RandomLogos); recursive=
 makedocs(;
     modules=[RandomLogos],
     authors="Satoshi Terasaki <terasakisatoshi.math@gmail.com> and contributors",
-    repo="https://github.com/AtelierArith/RandomLogos.jl/blob/{commit}{path}#{line}",
     sitename="RandomLogos.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
         canonical="https://AtelierArith.github.io/RandomLogos.jl",
         edit_link="main",
         assets=String[],
+        repolink = "https://github.com/AtelierArith/RandomLogos.jl",
+        # generated HTML over size_threshold limit
+        # https://documenter.juliadocs.org/latest/release-notes/#Breaking
+        size_threshold=nothing,
     ),
     pages=[
         "Home" => "index.md",
