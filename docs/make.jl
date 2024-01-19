@@ -6,7 +6,7 @@ DocMeta.setdocmeta!(RandomLogos, :DocTestSetup, :(using RandomLogos); recursive=
 makedocs(;
     modules=[RandomLogos],
     authors="Satoshi Terasaki <terasakisatoshi.math@gmail.com> and contributors",
-    repo="https://github.com/AtelierArith/RandomLogos.jl/blob/{commit}{path}#{line}",
+    repo=Remotes.Remote,
     sitename="RandomLogos.jl",
     format=Documenter.HTML(;
         prettyurls=get(ENV, "CI", "false") == "true",
