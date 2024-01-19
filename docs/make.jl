@@ -19,6 +19,9 @@ makedocs(;
         "Usage" => "usage.md",
         "API" => "api.md",
     ],
+    # generated HTML over size_threshold limit
+    # https://documenter.juliadocs.org/latest/release-notes/#Breaking
+    size_threshold=nothing, 
 )
 
 deploydocs(;
