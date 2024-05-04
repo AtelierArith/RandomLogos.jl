@@ -7,7 +7,7 @@ services:
     working_dir: /workspace/RandomLogos.jl
     ports:
       - "8888:8888"
-    command: jupyter notebook --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
+    command: rye run jupyter notebook --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
   lab:
     image: randomlogosjl
     container_name: randomlogosjl-lab
@@ -16,7 +16,7 @@ services:
     working_dir: /workspace/RandomLogos.jl
     ports:
       - "8888:8888"
-    command: jupyter lab --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
+    command: rye run jupyter lab --notebook-dir /workspace/RandomLogos.jl --ip=0.0.0.0 --allow-root
   julia:
     image: randomlogosjl
     container_name: randomlogosjl-julia
